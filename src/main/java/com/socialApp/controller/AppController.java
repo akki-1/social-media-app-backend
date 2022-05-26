@@ -58,7 +58,7 @@ public class AppController {
 	// this api will return user details
 	@GetMapping("/get-user/{id}")
 	public UserDto getUser(@PathVariable Integer id) {
-
+		
 		return this.userService.getUserById(id);
 	}
 }

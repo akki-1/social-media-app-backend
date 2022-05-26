@@ -30,7 +30,7 @@ public class FollowerController {
 	}
 
 	// this will return list of followers of user by providing user id
-	@GetMapping("get-all/{id}")
+	@GetMapping("get-all-followers/{id}")
 	public List<Followers> getAll(@PathVariable Integer id) {
 
 		return this.fservice.getAll(id);
