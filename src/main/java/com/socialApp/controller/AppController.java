@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ public class AppController {
 	// if user left blank in username section or password then this will return proper message to user.
 	@PostMapping("/signup")
 	public ResponseEntity<UserDto> signUp(@RequestBody @Valid UserDto udo) {
+		
 		UserDto userDto = this.userService.createUserDto(udo);
 
 		return new ResponseEntity<>(userDto, HttpStatus.CREATED);
@@ -47,7 +49,7 @@ public class AppController {
 
 		return jwtService.generateToken(req);
 	}
-
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping("/delete-user/{id}")
 	public ResponseEntity<ServerResponse> removeUser(@PathVariable Integer id) {
 		this.userService.deleteUser(id);

@@ -51,7 +51,7 @@ public class User implements UserDetails {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<UserImages> images;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "user_role")
 	private Set<Roles> userRoles = new HashSet<>();
