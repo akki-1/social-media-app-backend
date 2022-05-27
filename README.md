@@ -62,6 +62,6 @@ Hey there, this is Akki here to explain my assignment which is Social Media App.
        ![get image](images/get-image.png)
       
       
-*** As a fresher , I gave my 100% and if u were expecting more then sorry I couldn't. No doubt this isn't perfect code for this app,
-an Experienced player can do this is in less lines of code and with less efforts but that's why he is experienced and I am fresher ***
+***As a fresher , I gave my 100% and if u were expecting more then sorry I couldn't. No doubt this isn't perfect code for this app,
+an Experienced player can do this is in less lines of code and with less efforts but that's why he is experienced and I am fresher***
       
