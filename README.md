@@ -27,10 +27,11 @@ Hey there, this is Akki here to explain my assignment which is Social Media App.
       ![login image](images/loginFieldError.png)
        ![login image](images/wrong-password.png)
       
-3) ## "app/delete-user/{id}" => To Delete user by providing user id.  
-      This API is for Admin Role.If in future, we create admin role dashboard by adding some logic into code then only Admin can access this API and remove user from database.
+3) ## "app/delete-user/{id}" => To Delete user by providing user id from Admin Role or Authority.  
+      This API is only for Admin Role.If in future, we create admin role dashboard by adding some logic into code then only Admin can access this API and remove user from database.
       As we kept Role,Follwers,Following and UserImages cascade type to All,that means by removing user, all corresponding data of these entity related to user also get deleted.
       ![delet-user image](images/delete-user.png)
+      ![delet-user image](images/authorityError.png)
 
 4) ## "app/get-user/{id}" => To fetch user details by providing user id.    
     This will return all user details if we give proper user id in url.
