@@ -51,12 +51,13 @@ public class AppExceptionHandler {
 		ServerResponse sr = new ServerResponse(msg, false);
 		return new ResponseEntity<ServerResponse>(sr, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(AccessDeniedException.class)
 	public ResponseEntity<ServerResponse> userNotHaveAccess() {
 
+		
 		String msg = "You don't have Authority to acess this API";
 		ServerResponse sr = new ServerResponse(msg, false);
-		return new ResponseEntity<ServerResponse>(sr, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ServerResponse>(sr, HttpStatus.UNAUTHORIZED);
 	}
 }

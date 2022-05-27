@@ -32,12 +32,15 @@ public class AppController {
 	@Autowired
 	private JwtService jwtService;
 
-	// this api is open for all where new user can signup by providing necessary details
-	// we are using @Valid annotation before UserDto object , this will take care of invalid fields like 
-	// if user left blank in username section or password then this will return proper message to user.
+	// this api is open for all where new user can signup by providing necessary
+	// details
+	// we are using @Valid annotation before UserDto object , this will take care of
+	// invalid fields like
+	// if user left blank in username section or password then this will return
+	// proper message to user.
 	@PostMapping("/signup")
 	public ResponseEntity<UserDto> signUp(@RequestBody @Valid UserDto udo) {
-		
+
 		UserDto userDto = this.userService.createUserDto(udo);
 
 		return new ResponseEntity<>(userDto, HttpStatus.CREATED);
@@ -49,6 +52,7 @@ public class AppController {
 
 		return jwtService.generateToken(req);
 	}
+
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping("/delete-user/{id}")
 	public ResponseEntity<ServerResponse> removeUser(@PathVariable Integer id) {
@@ -60,7 +64,7 @@ public class AppController {
 	// this api will return user details
 	@GetMapping("/get-user/{id}")
 	public UserDto getUser(@PathVariable Integer id) {
-		
+
 		return this.userService.getUserById(id);
 	}
 }
