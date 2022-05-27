@@ -25,6 +25,7 @@ Hey there, this is Akki here to explain my assignment which is Social Media App.
       ![login image](images/login.png)
       ## If user enter some inavlid fields then proper message will be displayed.
       ![login image](images/loginFieldError.png)
+       ![login image](images/wrong-password.png)
       
 3) ## "app/delete-user/{id}" => To Delete user by providing user id.  
       This API is for Admin Role.If in future, we create admin role dashboard by adding some logic into code then only Admin can access this API and remove user from database.
