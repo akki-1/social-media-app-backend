@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.socialApp.entity.User;
+import com.socialApp.exception.CustomUsernameNotFoundException;
 import com.socialApp.repo.UserRepo;
 
 @Service
@@ -21,7 +22,7 @@ public class CustomUserDetailService implements UserDetailsService {
 		User user = this.up.findByUsername(username);
 		if (user == null) {
 
-			throw new UsernameNotFoundException("Invalid CredentiAL");
+			throw new CustomUsernameNotFoundException("Username not found !!");
 		}
 		return user;
 	}

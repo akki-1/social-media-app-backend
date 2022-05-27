@@ -1,3 +1,4 @@
+
 package com.socialApp.exception;
 
 import lombok.Getter;

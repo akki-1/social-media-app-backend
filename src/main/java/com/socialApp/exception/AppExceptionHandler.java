@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.socialApp.payload.ServerResponse;
 
-
 // this is global exception handling
 @RestControllerAdvice
 public class AppExceptionHandler {
@@ -34,5 +33,21 @@ public class AppExceptionHandler {
 			response.put(fieldName, message);
 		});
 		return new ResponseEntity<Map<String, String>>(response, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CustomBadCredential.class)
+	public ResponseEntity<ServerResponse> customBadCredentialHandler(CustomBadCredential userEx) {
+
+		String msg = userEx.getMessage();
+		ServerResponse sr = new ServerResponse(msg, false);
+		return new ResponseEntity<ServerResponse>(sr, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CustomUsernameNotFoundException.class)
+	public ResponseEntity<ServerResponse> usernameNotFoundException(CustomUsernameNotFoundException userEx) {
+
+		String msg = userEx.getMessage();
+		ServerResponse sr = new ServerResponse(msg, false);
+		return new ResponseEntity<ServerResponse>(sr, HttpStatus.NOT_FOUND);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.socialApp.exception.CustomBadCredential;
 import com.socialApp.payload.JwtRequest;
 import com.socialApp.payload.JwtResponse;
 import com.socialApp.security.CustomUserDetailService;
@@ -27,8 +28,8 @@ public class JwtService {
 
 	public ResponseEntity<JwtResponse> generateToken(JwtRequest req) {
 
-		this.authenticate(req.getUsername(), req.getPassword());
 		UserDetails user = this.uds.loadUserByUsername(req.getUsername());
+		this.authenticate(req.getUsername(), req.getPassword());
 		String token = this.utils.generateToken(user);
 		JwtResponse response = new JwtResponse();
 		response.setJwtToken(token);
@@ -38,8 +39,11 @@ public class JwtService {
 	private void authenticate(String username, String password) {
 
 		UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(username, password);
-
-		this.authenticationManager.authenticate(upat);
+		try {
+			this.authenticationManager.authenticate(upat);
+		} catch (Exception e) {
+			throw new CustomBadCredential("Invalid Password ,try with correct password!!");
+		}
 
 	}
 
